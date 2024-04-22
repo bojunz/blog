@@ -1,0 +1,35 @@
+{% extends 'display/demo_base.html' %}
+
+{% block title %}
+产品详情页
+{% endblock %}
+
+{% block body %}
+<style>
+th,td {
+    padding: 20px; /* Adjust the value as needed */
+}
+</style>
+
+<h1>{{ blogid.0.sku }}</h1>
+ <table>
+        <tr>
+            <th>产品名字</th>
+            <th>数量变化</th>
+            <th>用途</th>
+            <th>日期</th>
+            <th>操作</th>
+        </tr>
+        {% for b in blogid%}
+            <tr>
+            <td>{{ b.sku }}</td>
+            <td>{{ b.number }}</td>
+            <td>库存变化</td>
+            <td>{{ date }}</td>
+            <td><a href="">编辑</a> <a href="{% url 'delete' b.id %}">删除</a></td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'list' %}">返回列表页</a>
+{% endblock %}

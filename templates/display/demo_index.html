@@ -1,0 +1,11 @@
+{% extends 'display/demo_base.html' %}
+
+{% block title %}
+这是博客首页
+{% endblock %}
+
+{% block body %}
+<p><a href="{% url 'add' %}">添加博客</a></p>
+<p><a href="{% url 'list' %}">博客列表</a></p>
+{#    上下文处理器用户名{{ myuser }}#}
+{% endblock %}

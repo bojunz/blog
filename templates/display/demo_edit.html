@@ -1,0 +1,36 @@
+{#{% extends 'display/demo_base.html' %}#}
+{##}
+{#{% block title %}#}
+{#编辑页面#}
+{#{% endblock %}#}
+{##}
+{#{% block body %}#}
+{#    csrf_toke的防止跨域请求#}
+{#    <h1>编辑产品</h1>#}
+{#    <form action="{% url 'edit' blog.id %}" method="post">{% csrf_token %}#}
+{#        {{ blog.name }}<input type="text" id="product" name="title" placeholder="请输入产品类型名">#}
+{#        {{ blog.sku }}<input type="text" id="sku" name="content" placeholder="请输入产品编号">#}
+{#        {{ blog.number }}<input type="number" id='number' name="number" placeholder="请输入产品数量">#}
+{#    <button type="submit">提交变动</button>#}
+{#    <button type="reset">重置页面</button>#}
+{##}
+{#    </form>#}
+{#    <a href="{% url 'index' %}">返回首页</a>#}
+{##}
+{#{% endblock %}#}
+<form action="{% url 'edit' blog.id %}" method="post">
+    {% csrf_token %}
+    <label for="product">产品名：</label>
+    <input type="text" id="product" name="title" value="{{ blog.name }}" placeholder="请输入产品类型名">
+
+    <label for="sku">产品编号：</label>
+    <input type="text" id="sku" name="content" value="{{ blog.sku }}" placeholder="请输入产品编号">
+
+    <label for="number">产品数量：</label>
+    <input type="number" id="number" name="number" value="{{ blog.number }}" placeholder="请输入产品数量">
+
+    <button type="submit">提交变动</button>
+    <button type="reset">重置页面</button>
+</form>
+
+<a href="{% url 'index' %}">返回首页</a>

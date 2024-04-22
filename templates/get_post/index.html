@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求与响应</title>
+</head>
+<body>
+<form action="{% url 'upload' %}" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    用户名 <input type="text" name="user" placeholder="请输入用户名"> <br>
+    密码 <input type="password" name="pwd" placeholder="请输入密码"><br>
+    爱好 <input type="checkbox" name='hobby' value="draw">画画
+     <input type="checkbox" name='hobby' value="sing">唱歌
+     <input type="checkbox" name='hobby' value="sport">篮球 <br>
+    <input type="file" name="file"> <br>
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

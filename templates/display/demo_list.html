@@ -1,0 +1,45 @@
+{% extends 'display/demo_base.html' %}
+
+{% block title %}
+    商品展示页
+{% endblock %}
+
+{% block body %}
+    <h1>商品列表</h1>
+    <table>
+        <tr>
+            <th>类型</th>
+            <th>产品</th>
+            <th>数量</th>
+            <th>操作</th>
+        </tr>
+        {% for b in pg %}
+            <tr>
+            <td>{{ b.name }}</td>
+            <td><a href="{% url 'detail' b.sku %}">{{ b.sku }}</a></td>
+            <td><a href="{% url 'detail' b.sku %}">{{ b.number }}</a></td>
+            <td><a href="{% url 'edit' b.id %}">编辑</a> <a href="{% url 'delete' b.id %} ">删除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# 判断当前页面是否有上一页 #}
+    {% if pg.has_previous %}
+        <a href="{% url 'list' %}?page={{ pg.previous_page_number }}">上一页</a>
+    {% endif %}
+
+    {% for i in pg_range %}
+        {% if pg.number == i %}
+            <a href="{% url 'list' %}?page={{ i }}" style="background: deepskyblue"><b>{{ i }}</b></a>
+        {% else %}
+            <a href="{% url 'list' %}?page={{ i }}">{{ i }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {# 判断当前页面是否有下一页 #}
+    {% if pg.has_next %}
+        <a href="{% url 'list' %}?page={{ pg.next_page_number }}">下一页</a>
+    {% endif %}
+    <br>
+    <a href="{% url 'index' %}">返回首页</a>
+{% endblock %}
